@@ -63,7 +63,7 @@ class Files
 
             $file->moveTo($moveTo = PUBLIC_DIR . $path);
 
-            @chmod($moveTo, 0755);
+            @chmod($moveTo, 0644);
         }
 
         return $this->jsonByFiles($files);
