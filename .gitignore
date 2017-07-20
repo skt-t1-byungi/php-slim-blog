@@ -3,5 +3,4 @@ node_modules/
 vendor/
 .env
 about.md
-docker/mysql-data/
 public/assets/
