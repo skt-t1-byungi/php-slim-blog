@@ -1,0 +1,47 @@
+{% extends 'template.twig' %}
+
+{% set head = {title:post.title, description:post.summary} %}
+
+{% block content %}
+    <article class="post">
+        <h1 class="post__title">{{ post.title }}</h1>
+
+        <h2 class="post__sub">
+            <time class="post__created-at">{{ post.created_at.format('Y-m-d') }}</time>
+
+            {% if auth.isAdmin() %}
+                <span class="post__sub-delimiter"></span>
+
+                {% if not post.is_published %}
+                    <span class="post__is-private">비공개 포스트</span>
+                {% endif %}
+
+                <span class="post__sub-buttons">
+                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.edit', {postId:post.id}) }}">수정</a>
+                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.delete', {postId:post.id}) }}">삭제</a>
+                </span>
+            {% endif %}
+        </h2>
+
+        <div class="markdown">
+            {{ post.parsed_content|raw }}
+        </div>
+
+        <ul class="tags tags--in-post">
+            {% for tag in post.tags %}
+                <li>
+                    <a class="tags__tag btn-flat" href="{{ path_for('tags', {tag:tag}) }}">{{ tag }}</a>
+                </li>
+            {% else %}
+                <li class="tags__no-tag">태그가 없습니다.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="post__btn-wrap">
+            <a class="btn-line" href="{{ post.pageLink() }}">목록 보기</a>
+        </div>
+    </article>
+
+    {% include 'posts/comments/index.twig' %}
+
+{% endblock %}

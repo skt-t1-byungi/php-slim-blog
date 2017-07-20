@@ -1,0 +1,79 @@
+{% macro renderComments(comments, root = false) %}
+    <ul {{ root ? 'id="comments"' }} class="comments__list{{ root? ' comments__list--root' }}">
+
+        {% for comment in comments %}
+            <li class="comment" id="{{ comment.idInTag() }}">
+
+                <div class="comment__inner">
+
+                    <div class="comment__left">
+                        <div class="comment__avatar" style="background-image: url({{ comment.user.avatar }})"
+                             title="{{ comment.user.name }}'s avatar"></div>
+                    </div>
+
+                    <div class="comment__right">
+                        <div class="comment__info">
+                            <div class="comment__info-left">
+                                <span class="comment__user">{{ comment.user.name }} </span>
+                                {% if comment.isUpdated() %}
+                                    <span class="comment__time comment__time--del">{{ comment.created_at }}</span>
+                                    <span class="comment__time">{{ comment.updated_at }}</span>
+                                {% else %}
+                                    <span class="comment__time">{{ comment.created_at }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="comment__info-right">
+                                {% if comment.trashed() %}
+                                    {#공백#}
+                                {% elseif auth.isAdmin() or auth.user() == comment.user %}
+                                    <a href="#" data-id="{{ comment.id }}" data-action="reply"
+                                       class="comment__action-link">답변</a>
+                                    <a href="#" data-id="{{ comment.id }}" data-action="edit"
+                                       class="comment__action-link">수정</a>
+                                    <a href="#" data-id="{{ comment.id }}" data-action="delete"
+                                       class="comment__action-link comment__action-link--last">삭제</a>
+                                {% else %}
+                                    <a href="#" data-id="{{ comment.id }}" data-action="reply"
+                                       class="comment__action-link">답변</a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="comment__content">
+                            {% if comment.trashed() %}
+                                <em class="comment__deleted">댓글을 삭제했습니다.</em>
+                            {% else %}
+                                {{ comment.content_html|raw }}
+                            {% endif %}
+                        </div>
+
+                        {% if not comment.trashed() %}
+                            {% include 'posts/comments/reply.twig' %}
+                        {% endif %}
+                    </div>
+
+                </div>
+                {% if not comment.trashed() %}
+                    {% include 'posts/comments/edit.twig' %}
+                {% endif %}
+
+
+                {% if comment.childrens is not empty %}
+                    {{ _self.renderComments(comment.childrens) }}
+                {% endif %}
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endmacro %}
+
+<div class="comments-status">
+    댓글 수 <em class="comments-status__count">{{ comments_count }}</em>
+</div>
+
+<section class="comments">
+    {{ _self.renderComments(comments, true) }}
+</section>
+
+{% include 'posts/comments/write.twig' %}

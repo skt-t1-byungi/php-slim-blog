@@ -1,0 +1,22 @@
+@import "../bem";
+@import "../variables";
+
+.subtitle {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: center;
+
+  @include e(em) {
+    color: $color-sub;
+    font-weight: bold;
+    border-bottom: 5px solid darken($color-background-sub, 25%);
+
+    @include m(for-tag) {
+      text-transform: capitalize;
+      letter-spacing: 0.1em;
+      margin-left: 15px;
+    }
+  }
+
+}

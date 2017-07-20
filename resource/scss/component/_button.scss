@@ -1,0 +1,55 @@
+@import "../bem";
+@import "../variables";
+
+.btn-flat {
+  $background: darken($color-background, 10%);
+
+  background: $background;
+  color: $color-black;
+  display: inline-block;
+  padding: 0.4em 0.6em;
+  border-radius: 0.3em;
+  text-decoration: none;
+  border: 0;
+
+  &:hover {
+    background: invert($background);
+    color: white;
+  }
+
+  @mixin large {
+    font-size: 1.05em;
+    padding: 0.5em 1em;
+  }
+
+  @include m(submit) {
+    @include large;
+    cursor: pointer;
+  }
+
+  @include m(cancel) {
+    @include large;
+    background: $color-sub;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.btn-line {
+  display: inline-block;
+  margin: 0 auto;
+  color: inherit;
+  background: transparent;
+  border: 2px solid ($color-black);
+  border-radius: 0.6em;
+  padding: 0.6em 2em;
+  font-size: 1.1em;
+  font-weight: 400;
+  text-decoration: none;
+
+  &:hover {
+    background: $color-black;
+    color: white;
+  }
+
+}

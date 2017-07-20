@@ -1,0 +1,70 @@
+@import "../bem";
+@import "../variables";
+@import "../breakpoint";
+
+%side-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.pagination {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  font-family: $font-eng;
+  $button-padding: 0.5em;
+
+  @include e(first) {
+    justify-content: flex-start;
+    @extend %side-button;
+  }
+
+  @include e(last) {
+    justify-content: flex-end;
+    @extend %side-button;
+  }
+
+  @include e(item) {
+    margin: 0 0.5em;
+  }
+
+  @include e(current) {
+    display: inline-block;
+    color: $color-black;
+    border-bottom: 2px solid $color-black;
+    padding: $button-padding;
+  }
+
+  @include e(link) {
+    display: inline-block;
+    $color: lighten($color-black, 30%);
+    color: $color;
+    text-decoration: none;
+    padding: $button-padding;
+
+    &:hover {
+      border-bottom: 2px solid $color;
+    }
+  }
+
+  @include e(btn) {
+    display: block;
+    font-size: 1em;
+    text-align: center;
+    width: 100px;
+    padding: 0.3em 0;
+    border-radius: 0.5em;
+    margin: 0;
+
+    @include breakpoint(sm) {
+      font-size: 1em;
+      width: 70px;
+    }
+
+    @include breakpoint(xs) {
+      font-size: 0.85em;
+      width: 60px;
+    }
+  }
+}

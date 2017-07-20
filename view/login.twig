@@ -1,0 +1,28 @@
+<div id="login" class="login">
+    <div class="login__box">
+        <p class="login__description">별도 회원가입 없이 SNS 계정으로 댓글을 남겨주세요.</p>
+        <ul class="login__buttons">
+
+            <li>
+                <a class="login__btn login__btn--google"
+                   href="{{ path_for('oauth.redirect', {providerId:'google'}) }}">
+                    <em class="login__em">Google</em> ID로 로그인
+                </a>
+            </li>
+            <li>
+                <a class="login__btn login__btn--facebook"
+                   href="{{ path_for('oauth.redirect', {providerId:'facebook'}) }}">
+                    <em class="login__em">Facebook</em> ID로 로그인
+                </a>
+            </li>
+            <li>
+                <a class="login__btn login__btn--naver"
+                   href="{{ path_for('oauth.redirect', {providerId:'naver'}) }}">
+                    <em class="login__em">Naver</em> ID로 로그인
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+

@@ -1,0 +1,57 @@
+@import "../bem";
+@import "../variables";
+@import "../breakpoint";
+
+.post-editor {
+  font-size: 1rem;
+
+  @include e(row) {
+    margin: 20px 0;
+  }
+
+  @include e(title) {
+    font-size: 1.2em
+  }
+
+  @include e(content) {
+    & > textarea {
+      width: 100%;
+      min-height: 500px;
+      box-sizing: border-box;
+    }
+  }
+
+  @include e(parsed) {
+    font-size: 0.8rem;
+    padding-left: 20px;
+
+    @include breakpoint(sm) {
+      padding: 0;
+    }
+  }
+
+  @include e(half) {
+    display: flex;
+
+    & > * {
+      width: 50%;
+
+      @include breakpoint(sm) {
+        width: 100%;
+      }
+    }
+
+    @include breakpoint(sm) {
+      display: block;
+    }
+  }
+
+  @include e(buttons) {
+    margin-top: 50px;
+    text-align: center;
+
+    & > * {
+      margin: 0 3px;
+    }
+  }
+}

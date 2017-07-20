@@ -1,0 +1,25 @@
+<form id="{{ id }}" class="comment-editor" action="{{ action }}" method="post">
+    {{ csrf_field() }}
+
+    <input name="post_id" type="hidden" value="{{ post_id }}">
+
+    {% block fields %}{% endblock %}
+
+    <div class="comment-editor__box {{ errors is not empty ? "comment-editor__box--error" }}">
+        <textarea class="comment-editor__textarea" name="comment" rows="2"
+                  title="comment"
+                  placeholder="{{ placeholder }}">{{ comment }}</textarea>
+
+        <div class="comment-editor__submit-wrap">
+            {% block buttons %}
+                <button class="comment-editor__button" type="submit">Write</button>
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="errors">
+        {% for error in errors %}
+            <p class="errors__error">{{ error }}</p>
+        {% endfor %}
+    </div>
+</form>

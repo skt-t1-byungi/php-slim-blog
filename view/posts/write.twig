@@ -1,0 +1,14 @@
+{% extends 'template.twig' %}
+
+{% block content %}
+    <h2 class="subtitle">포스트 작성</h2>
+
+    {% embed 'posts/editor.twig' with {action:path_for('posts.create')} %}
+        {% block buttons %}
+            <button type="submit" class="btn-flat btn-flat--submit">글쓰기</button>
+            <a href="{{ backUrl() }}" class="btn-flat btn-flat--cancel">취소</a>
+        {% endblock %}
+    {% endembed %}
+
+    {% include 'posts/file-upload.twig' %}
+{% endblock %}

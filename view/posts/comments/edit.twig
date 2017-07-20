@@ -1,0 +1,25 @@
+{% with %}
+    {% set id = comment.idInEditForm() %}
+    {% set post_id = comment.post_id %}
+    {% set comment_id = comment.id %}
+    {% set action = path_for('comments.update', {commentId:comment_id}) %}
+    {% set errors = old_input('action') == 'edit' and old_input('comment_id') == comment_id? errors.comment %}
+    {% set comment = errors? old_input('comment') : comment.comment %}
+
+    {% embed 'posts/comments/editor.twig' with {comment:comment} %}
+        {% block fields %}
+            {# @hack : 에러 핸들링할 때, 폼형식이 유사한 edit,create,reply을 action 필드를 추가해서 구분합니다. #}
+            <input name="action" type="hidden" value="edit">
+            <input name="comment_id" type="hidden" value="{{ comment_id }}">
+        {% endblock %}
+
+        {% block buttons %}
+            <button class="comment-editor__button" type="submit">Edit</button>
+
+            {# @hack : 동일한 edit 액션이 들어오면 toggle 됩니다. #}
+            <button data-action="edit" data-id="{{ comment_id }}"
+                    class="comment-editor__button comment-editor__button--cancel" type="button">Cancel
+            </button>
+        {% endblock %}
+    {% endembed %}
+{% endwith %}

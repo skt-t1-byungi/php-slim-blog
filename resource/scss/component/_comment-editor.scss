@@ -1,0 +1,69 @@
+@import "../bem";
+@import "../variables";
+
+.comment-editor {
+  @include e(box) {
+    background: white;
+    border: 1px solid darken($color-background, 10%);
+    border-radius: 5px;
+    padding: 20px;
+
+    @include m(error) {
+      border-color: $color-sub;
+    }
+  }
+
+  @include e(textarea) {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    line-height: 1.8em;
+    font-size: 0.9rem;
+    font-family: $font-ko;
+    font-weight: 300;
+    padding: 0;
+
+    &:disabled {
+      background: white;
+    }
+  }
+
+  @include e(submit-wrap) {
+    text-align: right;
+  }
+
+  @include e(button) {
+    $color: darken($color-background, 50%);
+    display: inline-block;
+    background: transparent;
+    border: 2px solid $color;
+    color: $color;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: $font-eng;
+    letter-spacing: 0.5em;
+    padding: 0.4em 0.4em 0.4em 0.9em;
+    font-size: 0.85rem;
+
+    &:hover {
+      cursor: pointer;
+      background: $color;
+      color: white;
+    }
+
+    @include m(cancel) {
+      $color: $color-sub;
+      border-color: $color;
+      color: $color;
+      margin-left: 5px;
+      letter-spacing: 0;
+
+      &:hover {
+        background: $color
+      }
+    }
+  }
+}
+

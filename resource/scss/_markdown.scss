@@ -1,0 +1,103 @@
+@import "variables";
+
+.markdown {
+  line-height: 1.85em;
+
+  p {
+    margin: 0;
+  }
+
+  & > p:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+
+  h1, h2, h3 {
+    color: $color-main;
+    margin-bottom: 1em;
+  }
+
+  h1, h2 {
+    margin-top: 2.85em;
+  }
+
+  h3 {
+    margin-top: 2.5em;
+  }
+
+  h4 {
+    margin-top: 2em;
+    margin-bottom: 0.35em;
+  }
+
+  *:not(pre) > code {
+    background: $color-background-sub;
+    padding: 2.5px 0.4em;
+    border: 1px solid darken($color-background-sub, 35%);
+    border-radius: 3px;
+  }
+
+  blockquote {
+    border-left: 10px solid $color-sub;
+    margin: 1.5em 10px;
+    padding: 1em 1.5em;
+  }
+
+  hr {
+    height: 0;
+    margin: 1.65em 0;
+    border: 0;
+    border-top: 2px solid darken($color-background, 15%);
+  }
+
+  a {
+    color: $color-sub;
+    text-decoration: underline;
+    &:hover {
+      color: $color-black;
+    }
+  }
+
+  img {
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    max-width: 100%;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 0.85em;
+    color: lighten($color-black, 25%);
+    margin-bottom: 1em;
+  }
+
+  code[class*="language-"] {
+    font-size: 1em;
+  }
+
+  & pre {
+    font-family: "Fira Mono", Menlo, Monaco, "Lucida Console", "Courier New", Courier, monospace;
+    font-size: 0.9em;
+    line-height: 1.8em;
+    direction: ltr;
+    text-align: left;
+    word-spacing: normal;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
+    background: #322931;
+    color: #b9b5b8;
+    padding: 1em;
+
+    margin: 1em 0;
+    overflow: auto;
+  }
+}

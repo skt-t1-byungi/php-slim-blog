@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,700');
+@import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import "~normalize.css";
+@import "~dropzone/dist/min/dropzone.min.css";
+@import "variables";
+@import "breakpoint";
+
+//공통 레이아웃
+html, body {
+  background: $color-background;
+  font-family: $font-ko;
+  font-weight: 300;
+  font-size: 17px;
+  color: $color-black;
+
+  @include breakpoint(sm) {
+    font-size: 15px;
+  }
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+}
+
+#wrap {
+  width: 1200px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  flex: 1;
+
+  @include breakpoint(md) {
+    width: 100%;
+  }
+
+  @include breakpoint(sm) {
+    padding: 60px 15px 0;
+  }
+}
+
+#about {
+  margin-bottom: 50px;
+}
+
+//컴포넌트
+@import "component/subtitle";
+@import "component/button";
+@import "component/etc";
+@import "component/form";
+@import "component/header";
+@import "component/posts";
+@import "component/pagination";
+@import "component/post";
+@import "component/tags";
+@import "component/post-editor";
+@import "component/comments";
+@import "component/comment-editor";
+@import "component/errors";
+@import "component/footer";
+@import "component/login";
+@import "component/file-upload";
+
+//기타
+@import "markdown";
+@import "code";

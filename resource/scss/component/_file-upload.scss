@@ -1,0 +1,55 @@
+@import "../bem";
+@import "../variables";
+
+.file-upload {
+  @include e(title) {
+    font-size: 1.3em;
+    font-weight: 500;
+    padding: 0.3em 0;
+    border-bottom: 1px solid $color-black;
+    margin-bottom: 20px;
+  }
+
+  @include e(subtitle) {
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+
+  @include e(section) {
+    margin-bottom: 25px;
+  }
+
+  @include e(table) {
+    font-size: 0.9em;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid $color-black;
+    background: white;
+  }
+
+  @include e(table-thead) {
+    background: $color-black;
+    color: white;
+    th {
+      font-weight: 400;
+      padding: 15px 0;
+    }
+  }
+
+  @include e(table-tbody) {
+    tr {
+      border: 1px solid $color-black;
+
+      &.empty {
+        color: lighten($color-black, 50%);
+        td {
+          padding: 30px
+        }
+      }
+    }
+    td {
+      padding: 0.5em;
+      text-align: center;
+    }
+  }
+}

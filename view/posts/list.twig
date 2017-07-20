@@ -1,0 +1,31 @@
+<ul class="posts">
+    {% for post in posts %}
+        <li class="posts__item">
+
+            <a class="posts__link" href="{{ post.link() }}">
+
+                    <span class="posts__info">
+                        <b class="posts__time">{{ post.created_at.diffForHumans() }}</b>
+                        댓글 수 <em class="posts__comments-count">{{ post.comments_count }}</em>
+                    </span>
+
+                <span class="posts__title">{{ post.title }}</span>
+
+                <span class="posts__summary">{{ post.summary }}</span>
+            </a>
+
+            <ul class="tags tags--in-posts">
+                {% for tag in post.tags %}
+                    <li>
+                        <a class="tags__tag btn-flat" href="{{ path_for('tags', {tag:tag}) }}">{{ tag }}</a>
+                    </li>
+                {% else %}
+                    <li class="tags__no-tag">태그가 없습니다.</li>
+                {% endfor %}
+            </ul>
+
+        </li>
+    {% endfor %}
+
+</ul>
+{% include 'posts/pagination.twig' with {paginator:posts} only %}

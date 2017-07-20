@@ -1,0 +1,55 @@
+<form action="{{ action }}" method="post" id="post-editor">
+    {{ csrf_field() }}
+
+    <div class="post-editor">
+
+        <div class="post-editor__row">
+            <label class="post-editor__title form__wide">
+                제목 <input class="form__text {{ errors.title is not empty ? "form__text--error" }}"
+                          type="text" name="title" value="{{ post.title|old('title') }}">
+            </label>
+        </div>
+
+        <div class="post-editor__row errors">
+            {% for error in errors.title %}
+                <p class="errors__error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="post-editor__row">
+            <label>
+                공개하기
+                <input type="checkbox" name="is_published"
+                       value="1" {{ post.is_published ? 'checked' : '' }} >
+            </label>
+        </div>
+
+        <div class="post-editor__row post-editor__half">
+            <div>
+                <label class="post-editor__content">
+                    <textarea
+                            class="form__textarea {{ errors.markdown_content is not empty ? "form__textarea--error" }}"
+                            name="markdown_content">{{ post.markdown_content|old('markdown_content') }}</textarea>
+                </label>
+            </div>
+            <div class="markdown post-editor__parsed">
+            </div>
+        </div>
+
+        <div class="editor__row errors">
+            {% for error in errors.markdown_content %}
+                <p class="errors__error">{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="post-editor__row">
+            <label class="form__wide">
+                태그(쉼표구분)<input class="form__text" type="text" id="tags-to-array" value="{{ post.tags|join(', ') }}">
+            </label>
+        </div>
+
+        <div class="post-editor__row post-editor__buttons">
+            {% block buttons %}{% endblock %}
+        </div>
+    </div>
+</form>

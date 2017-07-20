@@ -1,0 +1,10 @@
+@import "../bem";
+@import "../variables";
+
+.errors {
+  @include e(error) {
+    font-size: 0.9rem;
+    color: $color-sub;
+    font-weight: 500;
+  }
+}

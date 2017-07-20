@@ -1,0 +1,227 @@
+@import "../bem";
+@import "../variables";
+@import "../breakpoint";
+
+.comments-status {
+  font-weight: 400;
+  border-bottom: 2px solid $color-black;
+  padding: 15px 0;
+
+  &:before {
+    vertical-align: middle;
+    background: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDYxMiA2MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYxMiA2MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8ZyBpZD0iQ29tbWVudHNfMV8iPgoJCTxnPgoJCQk8cGF0aCBkPSJNMTkxLjI1LDM0NC4yNUg0NTl2LTc2LjVIMTUzdjc2LjVIMTkxLjI1TDE5MS4yNSwzNDQuMjV6IE00NTksMTUzSDE1M3Y3Ni41aDMwNlYxNTN6IE02MTIsNzYuNVYzOC4yNSAgICAgQzYxMiwxNy4xMzYsNTk0Ljg2NCwwLDU3My43NSwwaC03Ni41bDAsMGgtNDU5QzE3LjEzNiwwLDAsMTcuMTM2LDAsMzguMjVWNDU5YzAsMjEuMTE0LDE3LjEzNiwzOC4yNSwzOC4yNSwzOC4yNWgyODYuODc1ICAgICBMNDk3LjI1LDYxMlY0OTcuMjVoNzYuNWMyMS4xMTQsMCwzOC4yNS0xNy4xMzYsMzguMjUtMzguMjV2LTM4LjI1bDAsMFY3Ni41TDYxMiw3Ni41eiBNNTM1LjUsNDIwLjc1SDQ1OWwwLDBoLTM4LjI1djU3LjM3NSAgICAgbC05NS42MjUtNTcuMzc1SDE1M2wwLDBINzYuNVY3Ni41aDQ1OVY0MjAuNzV6IiBmaWxsPSIjNmI5YjdkIi8+CgkJPC9nPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    content: "";
+    margin-right: 10px;
+  }
+
+  @include e(count) {
+    margin-left: 5px;
+    color: $color-sub;
+    font-size: 1.1em;
+  }
+}
+
+$horizontal-pad: 15px;
+$vertical-pad: 35px;
+
+.comments {
+  margin-bottom: 30px;
+
+  @include e(list) {
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid darken($color-background, 10%);
+    margin-top: $vertical-pad;
+    margin-bottom: -$vertical-pad; // .comment bottom pad 만큼 제거
+    margin-left: 40px;
+
+    @include breakpoint(sm) {
+      margin-left: 20px;
+    }
+
+    @include breakpoint(xs) {
+      margin-left: 10px;
+    }
+
+    @include m(root) {
+      border: 0;
+      margin: 0;
+    }
+  }
+
+  // 본문 코드의 comment 클래스와 충돌하여 comments 을 부모클래스로 강제합니다.
+  .comment {
+    padding: $vertical-pad 0;
+
+    // last 블럭 대신 선택자 사용이 간편해서 현재단계에선 선택자 사용.
+    // 추후 bem 으로 전환이 요구될수도 있습니다.
+    &:not(:last-child) {
+      border-bottom: 1px solid darken($color-background, 10%);
+    }
+
+    transition: background 0.2s;
+    &:hover {
+      background: darken($color-background, 3%);
+    }
+
+    @include e(inner) {
+      display: flex;
+    }
+
+    @include e(left) {
+      margin: 0 20px 0 0;
+      width: 80px;
+      text-align: center;
+      padding-left: $horizontal-pad;
+
+      @include breakpoint(sm) {
+        width: 50px;
+      }
+
+      @include breakpoint(xs) {
+        width: 30px;
+      }
+    }
+
+    @include e(right) {
+      flex-grow: 1;
+      padding-right: $horizontal-pad;
+    }
+
+    @include e(avatar) {
+      margin: 0 auto;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+
+      @include breakpoint(sm) {
+        width: 40px;
+        height: 40px;
+      }
+
+      @include breakpoint(xs) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    @include e(info) {
+      margin-bottom: 10px;
+      display: flex;
+    }
+
+    @include e(info-right) {
+      flex-grow: 1;
+      text-align: right;
+    }
+
+    @include e(user) {
+      color: darken($color-main, 15%);
+      font-size: 0.85em;
+      font-weight: 400;
+      margin-right: 15px;
+      vertical-align: middle;
+    }
+
+    @include e(time) {
+      color: lighten($color-black, 20%);
+      font-size: 0.7em;
+      margin-right: 10px;
+      vertical-align: middle;
+
+      @include m(del) {
+        text-decoration: line-through;
+        color: lighten($color-black, 50%);
+      }
+
+      @include breakpoint(sm) {
+        font-size: 0.8em;
+      }
+
+      @include breakpoint(xs) {
+        font-size: 0.7em;
+      }
+
+      @media (max-width: 540px) {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+
+    @include e(action-link) {
+      font-size: 0.85em;
+      color: lighten($color-black, 25%);
+      margin: 0 3px;
+
+      @include m(last) {
+        margin: 0;
+      }
+
+      @include breakpoint(sm) {
+        font-size: 0.7em;
+      }
+
+      //텍스트 대신 유니코드 아이콘으로 대체
+      @include breakpoint(xs) {
+        margin: 0;
+
+        &[data-action] {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          font-size: 15px;
+          overflow: hidden;
+          text-decoration: none;
+          white-space: nowrap;
+
+          &:before {
+            margin-right: 20px;
+          }
+        }
+
+        &[data-action=reply]:before {
+          content: "\1F4AC";
+        }
+
+        &[data-action=edit]:before {
+          content: "\1F528";
+        }
+
+        &[data-action=delete]:before {
+          content: "\274C";
+        }
+      }
+    }
+
+    @include e(content) {
+      line-height: 1.8em;
+      font-size: 0.95em;
+      & > p:last-child {
+        margin: 0;
+      }
+    }
+
+    @include e(deleted) {
+      color: lighten($color-black, 35%);
+    }
+
+    // 예외적으로 현재 bem 을 무시하는 것이 더 간편해 보이나,
+    // 복잡성이 증대했을 때, bem 으로의 전환이 필요할 수 있습니다.
+    & [id^=reply-comment-] {
+      margin-top: 30px;
+      display: none;
+    }
+
+    & [id^=edit-comment-] {
+      display: none;
+      padding: 0 15px;
+    }
+  }
+}

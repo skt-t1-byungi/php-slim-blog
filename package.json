@@ -1,0 +1,38 @@
+{
+  "name": "php-slim-blog",
+  "version": "1.0.0",
+  "description": "byungi`s blog",
+  "main": "resource/js/index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "watch:php": "php -S localhost:8001 -t public | npm run watch",
+    "watch:no-dev": "webpack -w",
+    "watch": "webpack-dev-server --inline --open",
+    "docker": "docker-compose up -d",
+    "migration": "docker-compose exec php-fpm php migration.php",
+    "composer": "docker-compose exec php-fpm composer \"install\""
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.5",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "animatewithsass": "^3.2.1",
+    "autosize": "^3.0.21",
+    "dotenv": "^4.0.0",
+    "dropzone": "^5.1.1",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "normalize.css": "^7.0.0",
+    "page": "^1.7.1",
+    "prismjs": "^1.6.0"
+  }
+}

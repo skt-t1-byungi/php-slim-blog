@@ -1,0 +1,17 @@
+{% with %}
+    {% set id = comment.idInReplyForm() %}
+    {% set post_id = comment.post_id %}
+    {% set comment_id = comment.id %}
+    {% set action = path_for('comments.create') %}
+    {% set errors = old_input('action') == 'reply' and old_input('parent_id') == comment_id? errors.comment %}
+    {% set comment = errors? old_input('comment') %}
+
+    {% embed 'posts/comments/editor.twig' %}
+        {% block fields %}
+            {# @hack : 에러 핸들링할 때, 폼형식이 유사한 edit,create,reply을 action 필드를 추가해서 구분합니다. #}
+            <input name="action" type="hidden" value="reply">
+
+            <input name="parent_id" type="hidden" value="{{ comment_id }}">
+        {% endblock %}
+    {% endembed %}
+{% endwith %}

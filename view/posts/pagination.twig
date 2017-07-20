@@ -1,0 +1,49 @@
+{% if paginator.hasPages() %}
+
+    {# 페이지네이션 범위지정. 최소 3이상, 되도록 홀수 #}
+    {% set width = 3 %}
+
+    {% set range_start = paginator.currentPage() - (width//2) %}
+    {% if range_start < 1 %}
+        {% set range_start = 1 %}
+    {% endif %}
+
+    {% set range_end = range_start + width - 1 %}
+    {% if range_end > paginator.lastPage() %}
+        {% set range_end = paginator.lastPage() %}
+
+        {% if range_start != 1 %}
+            {% set range_start = paginator.lastPage() - width + 1 %}
+        {% endif %}
+    {% endif %}
+
+    <ul class="pagination">
+
+        <li class="pagination__first">
+            {% if range_start > 1 %}
+                <a class="btn-line pagination__btn" href="{{ paginator.url(1) }}">First</a>
+            {% endif %}
+        </li>
+
+        {% for page_num, page_url in paginator.getUrlRange(range_start, range_end) %}
+            {% if page_num == paginator.currentPage() %}
+                <li class="pagination__item">
+                    <span class="pagination__current">{{ page_num }}</span>
+                </li>
+            {% else %}
+                <li class="pagination__item">
+                    <a class="pagination__link" href="{{ page_url }}">{{ page_num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+
+        <li class="pagination__last">
+            {% if range_end < paginator.lastPage() %}
+                <a class="btn-line pagination__btn"
+                   href="{{ paginator.url(paginator.lastPage()) }}">Last</a>
+            {% endif %}
+        </li>
+
+    </ul>
+{% endif %}

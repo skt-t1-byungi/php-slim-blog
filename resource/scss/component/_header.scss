@@ -1,0 +1,101 @@
+@import "../variables";
+@import "../breakpoint";
+@import "../bem";
+@import "~animatewithsass/animate";
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+
+  @include breakpoint(sm) {
+    height: 100%;
+    width: 100%;
+    background: rgba($color-sub, 0.8);
+    position: fixed;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+  }
+
+  @include m(triggered) {
+    @include fadeIn(1, 0.5s);
+
+    @include breakpoint(sm) {
+      display: flex;
+    }
+  }
+
+  @include e(logo) {
+    text-indent: 0.3em;
+    border-bottom: 10px solid $color-background-sub;
+
+    &:hover {
+      @include flash(1, 0.5s);
+    }
+
+    @include breakpoint(sm) {
+      font-size: 6vw;
+      border: 0;
+    }
+  }
+
+  @include e(logo-link) {
+    letter-spacing: 0.3em;
+    color: $color-black;
+    text-decoration: none;
+    counter-reset: $color-main;
+    font-family: $font-eng;
+    font-weight: 400;
+  }
+
+  @include e(blogger) {
+    color: $color-main;
+    font-weight: 700;
+
+    @include breakpoint(sm) {
+      color: white;
+      font-size: 7vw;
+    }
+  }
+
+  @include e(menu) {
+    flex-grow: 1;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+
+    @include breakpoint(sm) {
+      flex-direction: column;
+      flex-grow: inherit;
+    }
+  }
+
+  @include e(link) {
+    color: $color-main;
+    text-decoration: none;
+    font-family: $font-eng;
+    font-size: 1.4rem;
+    display: inline-block;
+    padding: 0 0.6em;
+
+    @include m(last) {
+      //padding 만큼 margin 을 줄여 텍스트를 박스 끝에 맞춘다.
+      margin-right: -0.6em;
+    }
+
+    @include breakpoint(sm) {
+      color: $color-black;
+      border-bottom: 1px solid $color-black;
+      margin: 0 0 3.5vh;
+      font-size: 6vh;
+    }
+
+    &:hover {
+      @include tada(1, 1s);
+    }
+  }
+}

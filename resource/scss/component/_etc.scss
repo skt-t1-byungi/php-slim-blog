@@ -1,0 +1,66 @@
+@import "../bem";
+@import "../breakpoint";
+@import "../variables";
+
+.etc {
+  margin-top: 15px;
+  text-align: right;
+
+  @include breakpoint(sm) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  @include breakpoint(xs) {
+    padding: 5px 15px;
+  }
+
+  @include e(trigger) {
+    background: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU4IDU4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1OCA1ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMnB4IiBoZWlnaHQ9IjMycHgiPgo8cGF0aCBkPSJNMCwwdjU4aDU4VjBIMHogTTQ5LDQ3SDl2LTRoNDBWNDd6IE00OSwzMUg5di00aDQwVjMxeiBNNDksMTVIOXYtNGg0MFYxNXoiIGZpbGw9IiMyM2UxZTgiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+    background-size: contain;
+    float: left;
+    overflow: hidden;
+    text-indent: 32px;
+    white-space: nowrap;
+    width: 30px;
+    height: 30px;
+    display: none;
+
+    @include breakpoint(sm) {
+      display: inline-block;
+    }
+
+    @include breakpoint(xs) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  @include e(link) {
+    color: darken($color-background, 45%);
+    font-family: $font-eng;
+    font-size: 0.9em;
+    padding: 0.3em 0.6em;
+
+    @include m(last) {
+      //padding 만큼 margin 을 줄여 텍스트를 박스 끝에 맞춘다.
+      margin-right: -0.6em;
+    }
+
+    @include breakpoint(sm) {
+      font-size: 1em;
+    }
+
+    @include breakpoint(xs) {
+      font-size: 0.8em;
+    }
+  }
+}
+

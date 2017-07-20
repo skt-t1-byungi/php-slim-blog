@@ -1,0 +1,42 @@
+@import "../bem";
+@import "../variables";
+
+%inset-style {
+  border: 1px solid #ccc;
+  box-shadow: inset 3px 3px 5px 0 #eeeeee;
+  border-radius: 5px;
+  padding: 0.35em 0.6em;
+}
+
+.form {
+
+  @include e(wide) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(text) {
+    @extend %inset-style;
+    line-height: 2em;
+    margin-left: 20px;
+    flex: 1;
+
+    @include m(error) {
+      border-color: $color-sub;
+    }
+  }
+
+  @include e(checkbox) {
+    font-weight: 400;
+  }
+
+  @include e(textarea) {
+    @extend %inset-style;
+    line-height: 1.8em;
+    resize: none;
+
+    @include m(error) {
+      border-color: $color-sub;
+    }
+  }
+}

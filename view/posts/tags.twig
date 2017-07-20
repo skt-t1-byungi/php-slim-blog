@@ -1,0 +1,7 @@
+{% extends 'template.twig' %}
+
+{% block content %}
+    <h2 class="subtitle">태그검색 <em class="subtitle__em subtitle__em--for-tag">{{ tag }}</em></h2>
+
+    {% include 'posts/list.twig' %}
+{% endblock %}

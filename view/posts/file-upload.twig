@@ -1,0 +1,47 @@
+<div id="file-upload" class="file-upload">
+    <h1 class="file-upload__title">파일 업로드</h1>
+
+    <div class="file-upload__section">
+        <h2 class="file-upload__subtitle">파일목록</h2>
+
+        <table id="file-table" class="file-upload__table" data-post-id="{{ post.id }}">
+            <thead class="file-upload__table-thead">
+            <tr>
+                <th>파일명</th>
+                <th>용량</th>
+                <th>날짜</th>
+                <th>삭제</th>
+                <th>기타</th>
+            </tr>
+            </thead>
+            <tbody class="file-upload__table-tbody">
+            <script id="file-template" type="text/template">
+                <tr>
+                    <td><%= name %></td>
+                    <td><%= size %></td>
+                    <td><%= createdAt %></td>
+                    <td>
+                        <button data-delete="<%= id %>">삭제</button>
+                    </td>
+                    <td>
+                        <% if(isImage){ %>
+                        <button data-image="<%= id %>">이미지 삽입</button>
+                        <% } %>
+                        <button data-download="<%= id %>">다운로드 링크</button>
+                    </td>
+                </tr>
+            </script>
+            <tr class="empty">
+                <td colspan="5">
+                    업로드 파일이 없습니다.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="file-upload__section">
+        <h2 class="file-upload__subtitle">업로드창</h2>
+        <div id="dropzone" class="dropzone"></div>
+    </div>
+</div>

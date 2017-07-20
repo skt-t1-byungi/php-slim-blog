@@ -1,0 +1,55 @@
+@import "../bem";
+@import "../variables";
+
+.posts {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1.8em;
+  margin-bottom: 50px;
+
+  @include e(item) {
+    border-bottom: 1px solid darken($color-background, 10%);
+    transition: background 0.2s;
+
+    &:hover {
+      background: darken($color-background, 5%);
+    }
+  }
+
+  @include e(link) {
+    padding: 35px 20px 0;
+    display: block;
+    color: $color-black;
+    text-decoration: none;
+  }
+
+  @include e(info) {
+    display: block;
+  }
+
+  @include e(time) {
+    color: lighten($color-black, 40%);
+    margin-right: 10px;
+    font-size: 1.1em;
+  }
+
+  @include e(comments-count) {
+    color: $color-sub;
+    font-weight: 500;
+    font-style: inherit;
+  }
+
+  @include e(title) {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.75em;
+    line-height: 1.6em;
+    padding: 8px 0 20px;
+  }
+
+  @include e(summary) {
+    display: block;
+    word-break: break-all;
+  }
+}
