@@ -6,7 +6,7 @@ php slim3으로 제작된 블로그 소스입니다.
 ```sh
 cp .env.example .env
 cp .about.md.example .about.md
-chmod 755 view/cache public/data
+chmod 777 view/cache public/data
 ```
 1. env 환경변수를 세팅하세요.
 2. about.md 파일에 자기소개를 작성하세요.
