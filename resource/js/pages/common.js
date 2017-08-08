@@ -35,3 +35,9 @@ $header.click(({target}) => {
         $header.removeClass('header--triggered');
     }
 });
+
+$(document).on('click', '[data-confirm]', ({target}) => {
+    if (!confirm(target.dataset.confirm)) {
+        return false;
+    }
+});

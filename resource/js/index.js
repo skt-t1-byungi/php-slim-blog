@@ -1,6 +1,7 @@
 import "prismjs";
 import "prismjs/components/prism-php";
 import "prismjs/components/prism-php-extras";
+import "prismjs/components/prism-typescript";
 
 import page from "page";
 import postsShow from "./pages/postsShow";

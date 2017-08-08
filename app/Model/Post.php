@@ -49,9 +49,7 @@ class Post extends Model
     {
         $this->fill($params + ['is_published' => false])->save();
 
-        if (!empty($params['tags'])) {
-            $this->syncTags($params['tags']);
-        }
+        $this->syncTags(array_get($params, 'tags', []));
 
         return $this;
     }
@@ -126,7 +124,7 @@ class Post extends Model
         return path_for('posts.index', [], ['page' => $page]);
     }
 
-    public function syncTags(array $tags)
+    public function syncTags(array $tags = [])
     {
         $this->tags()->sync(Tag::getOrCreate($tags)->pluck('id'));
     }

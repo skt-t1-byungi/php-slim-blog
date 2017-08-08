@@ -18,7 +18,8 @@
 
                 <span class="post__sub-buttons">
                     <a class="post__sub-button btn-flat" href="{{ path_for('posts.edit', {postId:post.id}) }}">수정</a>
-                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.delete', {postId:post.id}) }}">삭제</a>
+                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.delete', {postId:post.id}) }}"
+                       data-confirm="정말 삭제하시겠습니까?">삭제</a>
                 </span>
             {% endif %}
         </h2>
