@@ -6,7 +6,8 @@ use App\Controller\Files;
 use App\Controller\Login;
 use App\Controller\Posts;
 
-$app->get('/', [Posts::class, 'latest'])->setName('home');
+//$app->get('/', [Posts::class, 'latest'])->setName('home');
+$app->get('/', [Posts::class, 'index'])->setName('home');
 $app->get('/about', About::class)->setName('about');
 
 $app->group('/login', function () {
