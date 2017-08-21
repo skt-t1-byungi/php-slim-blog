@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ head.title ? head.title : "#{blogger} s BLOG" }}</title>
-    <meta name="description" content="{{ head.description ? head.description : "#{blogger} s BLOG" }}"/>
+    {% if head.description %}
+        <meta name="description" content="{{ head.description|replace({"\n":" "}) }}"/>
+    {% endif %}
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/app.css">
     <script>
@@ -28,24 +30,24 @@
 
 <div id="wrap">
     <div class="etc">
-        <span href="#" class="etc__trigger" data-header-trigger>메뉴열기</span>
+        <a href="#" class="etc__trigger" data-header-trigger>메뉴열기</a>
 
         {% if auth.check() %}
             {% if auth.isAdmin() %}
-                <a class="etc__link" href="{{ path_for('posts.write') }}">Write</a>
+                <a rel="nofollow" class="etc__link" href="{{ path_for('posts.write') }}">Write</a>
             {% endif %}
-            <a class="etc__link etc__link--last" href="{{ path_for('logout') }}">Logout</a>
+            <a rel="nofollow" class="etc__link etc__link--last" href="{{ path_for('logout') }}">Logout</a>
         {% else %}
-            <a class="etc__link etc__link--last" href="#" data-login>Login</a>
+            <a rel="nofollow" class="etc__link etc__link--last" href="#" data-login>Login</a>
         {% endif %}
     </div>
 
     <header class="header">
-        <h1 class="header__logo">
+        <div class="header__logo">
             <a class="header__logo-link" href="{{ path_for('home') }}">
                 <b class="header__blogger">{{ blogger }}</b>'s BLOG
             </a>
-        </h1>
+        </div>
         <ul class="header__menu">
             <li class="header__menu-item">
                 <a class="header__link" href="{{ path_for('about') }}">About</a>

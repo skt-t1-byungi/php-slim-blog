@@ -33,9 +33,9 @@ function view($path, $data = [])
      * @var \Twig_Environment $twig
      */
     $twig = resolve('twig');
-    return response()->write(
-        $twig->load($path . '.twig')->render($data)
-    );
+    return response()
+        ->write($twig->load($path . '.twig')->render($data))
+        ->withHeader('Content-type', 'text/html');
 }
 
 function abort($status = 500, $message = " A server error has occurred.")

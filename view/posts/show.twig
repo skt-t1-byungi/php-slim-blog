@@ -3,7 +3,7 @@
 {% set head = {title:post.title, description:post.summary} %}
 
 {% block content %}
-    <article class="post">
+    <section class="post">
         <h1 class="post__title">{{ post.title }}</h1>
 
         <h2 class="post__sub">
@@ -17,8 +17,11 @@
                 {% endif %}
 
                 <span class="post__sub-buttons">
-                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.edit', {postId:post.id}) }}">수정</a>
-                    <a class="post__sub-button btn-flat" href="{{ path_for('posts.delete', {postId:post.id}) }}"
+                    <a rel="nofollow" class="post__sub-button btn-flat"
+                       href="{{ path_for('posts.edit', {postId:post.id}) }}">수정</a>
+
+                    <a rel="nofollow" class="post__sub-button btn-flat"
+                       href="{{ path_for('posts.delete', {postId:post.id}) }}"
                        data-confirm="정말 삭제하시겠습니까?">삭제</a>
                 </span>
             {% endif %}
@@ -31,7 +34,7 @@
         <ul class="tags tags--in-post">
             {% for tag in post.tags %}
                 <li>
-                    <a class="tags__tag btn-flat" href="{{ path_for('tags', {tag:tag}) }}">{{ tag }}</a>
+                    <a rel="tag" class="tags__tag btn-flat" href="{{ tag.link() }}">{{ tag }}</a>
                 </li>
             {% else %}
                 <li class="tags__no-tag">태그가 없습니다.</li>
@@ -39,9 +42,9 @@
         </ul>
 
         <div class="post__btn-wrap">
-            <a class="btn-line" href="{{ post.pageLink() }}">목록 보기</a>
+            <a rel="index" class="btn-line" href="{{ post.pageLink() }}">목록 보기</a>
         </div>
-    </article>
+    </section>
 
     {% include 'posts/comments/index.twig' %}
 

@@ -21,7 +21,7 @@
 
         <li class="pagination__first">
             {% if range_start > 1 %}
-                <a class="btn-line pagination__btn" href="{{ paginator.url(1) }}">First</a>
+                <a rel="first" class="btn-line pagination__btn" href="{{ paginator.url(1) }}">First</a>
             {% endif %}
         </li>
 
@@ -32,7 +32,7 @@
                 </li>
             {% else %}
                 <li class="pagination__item">
-                    <a class="pagination__link" href="{{ page_url }}">{{ page_num }}</a>
+                    <a rel="sibling" class="pagination__link" href="{{ page_url }}">{{ page_num }}</a>
                 </li>
             {% endif %}
         {% endfor %}
@@ -40,7 +40,7 @@
 
         <li class="pagination__last">
             {% if range_end < paginator.lastPage() %}
-                <a class="btn-line pagination__btn"
+                <a rel="last" class="btn-line pagination__btn"
                    href="{{ paginator.url(paginator.lastPage()) }}">Last</a>
             {% endif %}
         </li>

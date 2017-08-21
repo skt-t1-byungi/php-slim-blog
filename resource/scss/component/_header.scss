@@ -29,6 +29,7 @@
   }
 
   @include e(logo) {
+    font-size: 2em;
     text-indent: 0.3em;
     border-bottom: 10px solid $color-background-sub;
 

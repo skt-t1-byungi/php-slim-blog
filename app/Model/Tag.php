@@ -5,6 +5,9 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
+/**
+ * @property string tag
+ */
 class Tag extends Model
 {
     protected $fillable = ['tag'];
@@ -30,6 +33,11 @@ class Tag extends Model
     public function posts()
     {
         return $this->belongsToMany(Post::class);
+    }
+
+    public function link()
+    {
+        return path_for('tags', ['tag' => urlencode($this->tag)]);
     }
 
     public function __toString()

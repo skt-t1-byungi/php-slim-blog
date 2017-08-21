@@ -72,8 +72,8 @@
     댓글 수 <em class="comments-status__count">{{ comments_count }}</em>
 </div>
 
-<section class="comments">
+<div class="comments">
     {{ _self.renderComments(comments, true) }}
-</section>
+</div>
 
 {% include 'posts/comments/write.twig' %}
