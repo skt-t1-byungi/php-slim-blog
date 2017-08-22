@@ -14,9 +14,11 @@ class TwigExtension extends \Twig_Extension
         $request = resolve(Request::class);
 
         return [
-            'auth'    => auth(),
-            'request' => $request,
-            'blogger' => getenv('ADMIN_PROVIDER_NAME')
+            'auth'             => auth(),
+            'request'          => $request,
+            'blogger'          => getenv('ADMIN_PROVIDER_NAME'),
+            'blog_description' => getenv('BLOG_DESCRIPTION'),
+            'canonical'        => rtrim(getenv('HTTP_BASE_URL'), '/') . $request->getUri()->getPath()
         ];
     }
 

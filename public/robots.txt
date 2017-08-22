@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tags/
+Disallow: /posts$
+Disallow: /posts/markdown
+Disallow: /files

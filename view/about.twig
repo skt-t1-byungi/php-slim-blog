@@ -1,5 +1,7 @@
 {% extends 'template.twig' %}
 
+{% set head = {title:"#{blogger} 소개"} %}
+
 {% block content %}
     <article id="about" class="markdown">
         {{ content|raw }}

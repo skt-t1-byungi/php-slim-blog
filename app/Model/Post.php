@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Controller\Posts;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
@@ -16,6 +17,8 @@ use Illuminate\Database\Query\Builder;
  * @property User user
  * @property string parsed_content
  * @property string summary
+ * @property Carbon created_at
+ * @property string title
  */
 class Post extends Model
 {
@@ -108,8 +111,12 @@ class Post extends Model
         return $this->hasMany(File::class);
     }
 
-    public function link()
+    public function link($withHost = false)
     {
+        if ($withHost) {
+            return url_for('posts.show', ['postId' => $this->id]);
+        }
+
         return path_for('posts.show', ['postId' => $this->id]);
     }
 

@@ -2,6 +2,7 @@
 
 use App\Controller\About;
 use App\Controller\Comments;
+use App\Controller\Feeder;
 use App\Controller\Files;
 use App\Controller\Login;
 use App\Controller\Posts;
@@ -46,3 +47,5 @@ $app->group('/files', function () {
     $this->post('/delete', [Files::class, 'delete'])->setName('files.delete');
     $this->get('/download/{hash}', [Files::class, 'download'])->setName('files.download');
 });
+
+$app->get('/feed.xml', Feeder::class)->setName('rss');

@@ -10,7 +10,9 @@
     "watch": "webpack-dev-server --inline --open",
     "docker": "docker-compose up -d",
     "migration": "docker-compose exec php-fpm php migration.php",
-    "composer": "docker-compose exec php-fpm composer \"install\""
+    "composer": "docker-compose exec php-fpm composer \"install\"",
+    "clear:view": "find view/cache/**/ -type d -print0 | xargs -0 rm -rf",
+    "clear": "npm run clear:view"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

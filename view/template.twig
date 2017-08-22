@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ head.title ? head.title : "#{blogger} s BLOG" }}</title>
-    {% if head.description %}
-        <meta name="description" content="{{ head.description|replace({"\n":" "}) }}"/>
-    {% endif %}
+    <link rel="canonical" href="{{ canonical }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ blogger }} 블로그" href="{{ path_for('rss') }}"/>
+    <title>{{ head.title ? head.title : "#{blogger} 블로그" }}</title>
+    <meta name="description"
+          content="{{ head.description ? head.description|replace({"\n":" "}) : blog_description }}"/>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/app.css">
     <script>
@@ -65,7 +65,7 @@
 
 <footer class="footer">
     <p class="footer__text">
-        <em class="footer__name"><b class="footer__author">{{ blogger }}</b>'s BLOG</em>
+        <em class="footer__name"><b class="footer__author">{{ blogger }}</b>' 블로그</em>
     </p>
 </footer>
 

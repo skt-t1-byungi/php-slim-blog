@@ -51,6 +51,11 @@ function path_for($name, $data = [], $query = [])
     return $path === '/' ? $path : rtrim($path, '/');
 }
 
+function url_for($name, $data = [], $query = [])
+{
+    return rtrim(getenv('HTTP_BASE_URL'), '/') . path_for($name, $data, $query);
+}
+
 /**
  * @param string $url
  * @param int $status

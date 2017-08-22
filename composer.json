@@ -17,7 +17,8 @@
     "erusev/parsedown": "^1.6",
     "vlucas/phpdotenv": "^2.4",
     "league/oauth2-facebook": "^2.0",
-    "hashids/hashids": "^2.0"
+    "hashids/hashids": "^2.0",
+    "suin/php-rss-writer": "^1.6"
   },
   "autoload": {
     "psr-4": {

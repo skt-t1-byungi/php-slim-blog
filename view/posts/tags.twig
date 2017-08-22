@@ -1,5 +1,7 @@
 {% extends 'template.twig' %}
 
+{% set head = {title:"태그 : #{tag}"} %}
+
 {% block content %}
     <h2 class="subtitle">태그검색 <em class="subtitle__em subtitle__em--for-tag">{{ tag }}</em></h2>
 
